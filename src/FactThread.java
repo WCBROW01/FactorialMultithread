@@ -3,7 +3,7 @@ import java.math.BigInteger;
 /**
  * The class that each thread uses to calculate its designated section of the factorial.
  * @author Will Brown
- * @version 1.0
+ * @version 1.1.0-alpha
  */
 
 public class FactThread extends Thread {

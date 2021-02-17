@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * This program generates a factorial with parallel processing!
  * @author Will Brown
- * @version 1.0
+ * @version 1.1.0-alpha
  */
 
 public class Main {
