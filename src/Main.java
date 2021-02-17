@@ -27,21 +27,11 @@ public class Main {
 				System.out.print("How many threads do you want to use? (0 to automatically allocate): ");
 				threadCount = input.nextInt();
 				
-				// If the input is less than 1 (either 0 or a negative number), grab the number of available processors and use that.
-				threadCount = threadCount < 1 ? Runtime.getRuntime().availableProcessors() : threadCount;
-				
 				// Clear anything left in the buffer
 				input.nextLine();
 				
 				System.out.print("Enter number to complete factorial: ");
 				number = input.nextInt();
-				
-				/*
-				 *  If we have a greater quantity of threads than numbers to multiply, we can't even use all of the threads for this
-				 *  because the program will (predictably) crash. The number is small enough at this point that initializing multiple threads
-				 *  will actually take longer than calculating the factorial, so why bother?
-				 */
-				threadCount = number < threadCount ? 1 : threadCount;
 				
 				System.out.println("Factorial of " + number + " is " + factorial(threadCount, number));
 			
@@ -71,9 +61,14 @@ public class Main {
 	 */
 	private static BigInteger factorial(int threadCount, int number) throws InterruptedException {
 		int threadNum;
-		
 		result = BigInteger.ONE;
 
+		// If the input is less than 1 (either 0 or a negative number), grab the number of available processors and use that.
+		threadCount = threadCount < 1 ? Runtime.getRuntime().availableProcessors() : threadCount;
+		
+		// If we have a greater quantity of threads than numbers to multiply, fall back to 1 thread.
+		threadCount = number < threadCount ? 1 : threadCount;
+		
 		// Create an array the size of the thread count.
 		FactThread[] factThread = new FactThread[threadCount];
 		
