@@ -24,8 +24,11 @@ public class Main {
 		
 		while (again == 'y' || again == 'Y') {
 			try {
-				System.out.print("How many threads do you want to use?: ");
+				System.out.print("How many threads do you want to use? (0 to automatically allocate): ");
 				threadCount = input.nextInt();
+				
+				// If the input is less than 1 (either 0 or a negative number), grab the number of available processors and use that.
+				threadCount = threadCount < 1 ? Runtime.getRuntime().availableProcessors() : threadCount;
 				
 				// Clear anything left in the buffer
 				input.nextLine();
@@ -38,7 +41,7 @@ public class Main {
 				 *  because the program will (predictably) crash. The number is small enough at this point that initializing multiple threads
 				 *  will actually take longer than calculating the factorial, so why bother?
 				 */
-				threadCount = number < threadCount || threadCount < 1? (int) 1 : threadCount;
+				threadCount = number < threadCount ? 1 : threadCount;
 				
 				System.out.println("Factorial of " + number + " is " + factorial(threadCount, number));
 			
