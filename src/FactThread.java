@@ -1,10 +1,21 @@
 import java.math.BigInteger;
 
+/**
+ * The class that each thread uses to calculate its designated section of the factorial.
+ * @author Will Brown
+ * @version 1.0
+ */
+
 public class FactThread extends Thread {
 
 	private int start, end;
 
-	// args: Current thread, total number of threads, factorial to calculate
+	/**
+	 * Determines the start and end points of the factorial for this specific thread.
+	 * @param threadNum the number designated to the current thread 
+	 * @param threadCount total number of threads
+	 * @param number input to calculate the factorial of
+	 */
 	public FactThread(int threadNum, int threadCount, int number) {
 		/*
 		 *  Store the start of the section to calculate as an integer (keeping this as a float could cause problems)
@@ -21,11 +32,16 @@ public class FactThread extends Thread {
 		end = (int) ((double) (threadNum+1)/threadCount * number);
 	}
 
+	/**
+	 * Generate the appropriate section of the factorial and send it back to the main thread.
+	 */
 	public void run() {
-		// Generate the appropriate section of the factorial and send it back to the main thread.
 		BigInteger section = BigInteger.ONE;
-		for (int count = start; count <= end; count++)
+		
+		for (int count = start; count <= end; count++) {
 			section = section.multiply(BigInteger.valueOf(count));
+		}
+		
 		Main.createResult(section);
 	}
 }
