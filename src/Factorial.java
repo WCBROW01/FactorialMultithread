@@ -9,31 +9,45 @@ import java.math.BigInteger;
 public class Factorial {
 	
 	private BigInteger result;
+	private int number, threadCount;
+	
+	/**
+	 * Empty-argument constructor that sets everything to 0 to denote that nothing has happened.
+	 */
+	public Factorial() {
+		result = BigInteger.ZERO;
+		setNumber(0);
+		setThreadCount(0);
+	}
 	
 	/**
 	 * Constructor that takes an input to calculate the factorial for.
 	 * Automatically sets the number of threads based on system specifications.
 	 * @param number the input number
-	 * @throws InterruptedException
 	 */
 	public Factorial(int number) {
-		result = BigInteger.ONE;
-		genFactorial(number, 0);
+		setNumber(number);
+		setThreadCount(0);
+		genFactorial();
 	}
 	
+	/**
+	 * Constructor that takes an input to calculate the factorial for.
+	 * Sets the number of threads based on user parameters.
+	 * @param number the input number
+	 */
 	public Factorial(int number, int threadCount) {
-		result = BigInteger.ONE;
-		genFactorial(number, threadCount);
+		setNumber(number);
+		setThreadCount(threadCount);
+		genFactorial();
 	}
 
 	/**
 	 * Sets up the threads and returns the result once everything is done.
-	 * @param threadCount total number of threads
-	 * @param number input to calculate the factorial of
 	 * @return The resulting factorial.
-	 * @throws InterruptedException
 	 */
-	private void genFactorial(int number, int threadCount) {
+	public void genFactorial() {
+		result = BigInteger.ONE;
 		int threadNum;
 		boolean finished = false;
 
@@ -68,8 +82,61 @@ public class Factorial {
 		}
 	}
 	
+	/**
+	 * Sets up the threads and returns the result once everything is done.
+	 * @param number input to calculate the factorial of
+	 * @return The resulting factorial.
+	 */
+	public void genFactorial(int number) {
+		setNumber(number);
+		genFactorial();
+	}
+	
+	/**
+	 * Sets up the threads and returns the result once everything is done.
+	 * @param number input to calculate the factorial of
+	 * @param threadCount total number of threads
+	 * @return The resulting factorial.
+	 */
+	public void genFactorial(int number, int threadCount) {
+		setNumber(number);
+		setThreadCount(threadCount);
+		genFactorial();
+	}
+	
+	/**
+	 * @return the result
+	 */
 	public BigInteger getResult() {
 		return result;
+	}
+
+	/**
+	 * @return the number
+	 */
+	public int getNumber() {
+		return number;
+	}
+
+	/**
+	 * @param number the number to set
+	 */
+	public void setNumber(int number) {
+		this.number = number < 0 ? 0 : number;
+	}
+
+	/**
+	 * @return the threadCount
+	 */
+	public int getThreadCount() {
+		return threadCount;
+	}
+
+	/**
+	 * @param threadCount the threadCount to set
+	 */
+	public void setThreadCount(int threadCount) {
+		this.threadCount = threadCount < 0 ? 0 : threadCount;
 	}
 	
 }
