@@ -69,7 +69,7 @@ public class TestApplication {
 				input.nextLine();
 			}
 			
-			System.out.print("Want to continue? (y/n): ");
+			System.out.print("\nWant to continue? (y/n): ");
 			again = input.next().strip().charAt(0);
 		}
 		
@@ -81,7 +81,7 @@ public class TestApplication {
 	 */
 	private static void printFactorial() {
 		Factorial myFactorial = new Factorial(number, threadCount);
-		System.out.println("Factorial of " + number + " is " + myFactorial.getResult());
+		System.out.print("Factorial of " + number + " is " + myFactorial.getResult());
 	}
 	
 	/**
