@@ -81,7 +81,7 @@ public class TestApplication {
 	 */
 	private static void printFactorial() {
 		Factorial myFactorial = new Factorial(number, threadCount);
-		System.out.print("Factorial of " + number + " is " + myFactorial.getResult());
+		System.out.print("Factorial of " + myFactorial.getNumber() + " is " + myFactorial.getResult());
 	}
 	
 	/**
