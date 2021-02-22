@@ -15,9 +15,9 @@ public class Factorial {
 	 * Empty-argument constructor that sets everything to 0 to denote that nothing has happened.
 	 */
 	public Factorial() {
-		result = BigInteger.ZERO;
 		setNumber(0);
 		setThreadCount(0);
+		result = BigInteger.ONE;
 	}
 	
 	/**
