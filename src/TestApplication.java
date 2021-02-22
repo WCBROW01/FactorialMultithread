@@ -93,6 +93,6 @@ public class TestApplication {
 				+ "Options:\n"
 				+ "-i, --interactive\tStart in interactive mode. Default if no arguments are passed.\n"
 				+ "-n, --number NUMBER\tInput number to calculate the factorial of.\n"
-				+ "-t, --threads THREADS\tNumber of threads to calculate the factorial with.";
+				+ "-t, --threads THREADS\tNumber of threads to calculate the factorial with. (Automatically determined if not passed)";
 	}
 }
