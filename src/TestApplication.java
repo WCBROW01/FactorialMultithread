@@ -28,7 +28,7 @@ public class TestApplication {
 				if (args[argument].equals("-n") || args[argument].equals("--number")) {
 					number = Integer.parseInt(args[argument + 1]);
 				} else if (args[argument].equals("-t") || args[argument].equals("--threads")) {
-					threadCount = Integer.parseInt(args[argument] + 1);
+					threadCount = Integer.parseInt(args[argument + 1]);
 				}
 			}
 			
