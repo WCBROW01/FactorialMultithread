@@ -21,18 +21,24 @@ public class TestApplication {
 		} else if (args[0].equals("-h") || args[0].equals("--help")) {
 			System.out.print(help());
 		} else {
+			boolean numberProvided = false;
 			threadCount = 0; // default in case no value is entered
 			
 			// Iterate through arguments
 			for (int argument = 0; argument < args.length; argument++) {
 				if (args[argument].equals("-n") || args[argument].equals("--number")) {
+					numberProvided = true;
 					number = Integer.parseInt(args[argument + 1]);
 				} else if (args[argument].equals("-t") || args[argument].equals("--threads")) {
 					threadCount = Integer.parseInt(args[argument + 1]);
 				}
 			}
 			
-			printFactorial();
+			if (numberProvided) {
+				printFactorial();
+			} else {
+				System.out.print("You did not provide a number!");
+			}
 		}
 	}
 	
