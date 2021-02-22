@@ -19,7 +19,7 @@ public class TestApplication {
 		if (args.length == 0 || args[0].equals("-i") || args[0].equals("--interactive")) {
 			interactive();
 		} else if (args[0].equals("-h") || args[0].equals("--help")) {
-			printHelp();
+			System.out.print(help());
 		} else {
 			threadCount = 0; // default in case no value is entered
 			
@@ -81,8 +81,12 @@ public class TestApplication {
 	/**
 	 * Prints help information.
 	 */
-	private static void printHelp() {
-		// TODO: Create help text
-		System.out.println("Unimplemented feature: help");
+	private static String help() {
+		return "Usage: java TestApplication [OPTIONS]\n"
+				+ "This program generates a factorial with parallel processing!\n\n"
+				+ "Options:\n"
+				+ "-i, --interactive\tStart in interactive mode. Default if no arguments are passed.\n"
+				+ "-n, --number NUMBER\tInput number to calculate the factorial of.\n"
+				+ "-t, --threads THREADS\tNumber of threads to calculate the factorial with.";
 	}
 }
