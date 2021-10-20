@@ -136,7 +136,7 @@ public class Factorial {
 	 * @param threadCount the threadCount to set
 	 */
 	public void setThreadCount(int threadCount) {
-		this.threadCount = threadCount < 0 ? 0 : threadCount;
+		this.threadCount = threadCount;
 	}
 	
 }
